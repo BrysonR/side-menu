@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+		<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no"> 
+		<style>
+		html, body {
+			width: 100%;
+			height: 100%;
+			margin: 0;
+			padding: 0;
+           z-index: 1;
+		}
+		.page {
+			position: relative;
+			width: 100%;
+			height: 100%;
+			z-index: 2;
+			background-color: fuchsia;
+			-webkit-transition: all 500ms ease-in-out;
+			transition:	all 500ms ease-in-out;
+		}
+		.page.open {
+			height: 100%;
+			margin-left: 250px;
+		}
+		.menu {
+           	background-color: rgba(153, 0, 153, 0);
+			position: absolute;
+			top: 25%;
+			z-index: 1;
+			bottom: 25%;
+			width: 250px;
+			height: 50%;
+			left: 10%;
+			box-shadow: 15px 15px 20px rgba(0,0, 0, 0.4);
+			-webkit-transition: all 500ms ease-in-out;
+			transition: all 500ms ease-in-out;
+		}
+		.menu.open {
+			background-color: rgba(153, 0, 153, 1);
+			left: 0;
+			top: 0;
+			height: 100%;
+			opacity: 1;
+			box-shadow: 2px 2px 4px rgba(0,0, 0, 0.4);
+		}
+		nav {
+			position: static;
+			height: 50px;
+			width: 100%;
+		}
+		.toggle {
+			position: relative;
+			top: 0;
+			cursor: pointer;
+			left: 0;
+			width: 50px;
+			height: 40px;
+			padding: 5px 15px;
+			vertical-align: middle;
+		}
+		.icon-bar {
+			display: block;
+			vertical-align: top;
+			line-height: 15px;
+			width: 100%;
+			height: 5px;
+			background-color: rgba(255,255,255,0.6);
+			-webkit-transition: all 500ms ease-in-out;
+			transition: all 500ms ease-in-out;
+		}
+		.icon-bar.open {;
+		}
+		.icon-bar.top {
+			margin-top: 7px;
+		}
+		.icon-bar.top.open {
+			margin-top: 17.5px;
+			transform: rotate(-45deg);
+		}
+		.icon-bar.middle {
+			margin-top: 8px;
+		}
+		.icon-bar.middle.open {
+			width: 0;
+			height: 0;
+		}
+		.icon-bar.bottom {
+			margin-top: 9px;
+		}
+		.icon-bar.bottom.open {
+			transform: rotate(45deg);
+			margin-top: -12px;
+		}
+		li {
+			color: rgba(255,255,255,0.6);
+			height: 50px;
+			font-weight: bolder;
+			font-size: 25px;
+			letter-spacing: 1px;
+			list-style: none;
+			vertical-align: middle;
+			line-height: 50px;
+			text-align: center;
+		}
+		ul {
+			margin-top: 7px;
+			margin-bottom: 7px;
+			padding-left: 10px;
+		}
+		li>span {
+			padding-right: 10px;
+			text-align: right;
+		}
+		</style>
+	</head>
+	<body>
+		<div class="menu">
+			<ul>
+				<li><span>Thing 1</span></li>
+				<li style="border-top: 0;"><span>Thing2</span></li>
+				<li style="border-top: 0;"><span>Thing3</span></li>
+			</ul>
+		</div>
+		<div class="page">
+			<nav>
+				<div class="toggle">
+					<span class="icon-bar top"></span>
+					<span class="icon-bar middle"></span>
+					<span class="icon-bar bottom"></span>										
+				</div>
+			</nav>
+		</div>
+		<script>
+		$(function() {
+			$('.toggle').click(function() {
+				var page = $('.page');
+				if(!page.hasClass('open'))
+				{
+					page.toggleClass('open');
+					$('.menu').toggleClass('open');
+					$('.icon-bar').toggleClass('open');
+				} else {
+					page.toggleClass('open');
+					$('.menu').toggleClass('open');
+					$('.icon-bar').toggleClass('open');
+					$('.page').css('margin-top', 0);
+				}
+			})
+		})
+		</script>
+	</body>
+</html>
